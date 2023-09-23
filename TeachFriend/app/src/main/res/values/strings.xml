@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">TeachFriend</string>
-    <string name="appName">Teacher\'s Friend</string>
-    <string name="username">Username\n</string>
+    <string name="app_name">Trackster</string>
+    <string name="appName">Trackster</string>
+    <string name="credentials">Credentials\n</string>
     <string name="password">Password</string>
-    <string name="signIn">Sign In</string>
+    <string name="logIn">Sign In</string>
     <string name="hidePassword">Hide Password</string>
     <string name="showPassword">Show Password</string>
 </resources>

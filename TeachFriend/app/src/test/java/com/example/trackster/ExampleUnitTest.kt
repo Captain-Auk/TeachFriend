@@ -1,4 +1,4 @@
-package com.example.teachfriend
+package com.example.trackster
 
 import org.junit.Test
 

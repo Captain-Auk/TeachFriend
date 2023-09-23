@@ -1,4 +1,4 @@
-package com.example.teachfriend.ui.theme
+package com.example.trackster.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
