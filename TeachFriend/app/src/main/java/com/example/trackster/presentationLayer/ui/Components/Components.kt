@@ -1,4 +1,4 @@
-package com.example.trackster.components
+package com.example.trackster.presentationLayer.ui.Components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
@@ -43,7 +43,8 @@ fun PasswordTextField(
 @Composable
 fun GeneralButton(
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    isEnabled:Boolean = false
 ) {
     Button(
         onClick = onClick,

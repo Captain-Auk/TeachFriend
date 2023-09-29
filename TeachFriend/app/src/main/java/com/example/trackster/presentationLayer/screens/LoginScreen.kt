@@ -1,4 +1,4 @@
-package com.example.trackster.screens
+package com.example.trackster.presentationLayer.screens
 
 
 import android.annotation.SuppressLint
@@ -10,23 +10,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+
 import com.example.teachfriend.R
-import com.example.trackster.components.GeneralButton
-import com.example.trackster.components.GeneralTextField
-import com.example.trackster.components.PasswordTextField
-import com.example.trackster.ViewModels.LoginViewModel
-import com.example.trackster.dataLayer.AuthRepository
+import com.example.trackster.presentationLayer.ui.Components.GeneralButton
+import com.example.trackster.presentationLayer.ui.Components.GeneralTextField
+import com.example.trackster.presentationLayer.ui.Components.PasswordTextField
+import com.example.trackster.presentationLayer.viewModels.LoginViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LoginScreen() {
 
-
     val viewModel: LoginViewModel = viewModel()
+
     val username = viewModel.credentials.collectAsState()
     val password = viewModel.password.collectAsState()
     val loginResult = viewModel.loginResult.collectAsState()
@@ -35,10 +38,13 @@ fun LoginScreen() {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Login App") },
+                    title = { Text(text = stringResource(id = R.string.app_name)) },
                     navigationIcon = {
                         IconButton(onClick = { /*TODO*/ }) {
-                            Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
+                            Icon(
+                                imageVector = Icons.Default.Menu,
+                                contentDescription = stringResource(id = R.string.menu_name)
+                            )
                         }
                     }
                 )
@@ -49,6 +55,14 @@ fun LoginScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
+                loginResult.value?.let {
+                    Text(
+                        text = it,
+                        color= Color.Red,
+                        style = MaterialTheme.typography.bodyMedium)
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+
                 GeneralTextField(
                     value = username.value,
                     onValueChange = { viewModel.onUsernameChanged(it) },
@@ -65,10 +79,6 @@ fun LoginScreen() {
                     text = stringResource(id = R.string.logIn),
                     onClick = { viewModel.onLoginClicked() }
                 )
-                Spacer(modifier = Modifier.height(8.dp))
-                loginResult.value?.let {
-                    Text(text = it, style = MaterialTheme.typography.bodyMedium)
-                }
             }
         }
     }

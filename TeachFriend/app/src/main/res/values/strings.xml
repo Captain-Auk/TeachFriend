@@ -6,4 +6,5 @@
     <string name="logIn">Sign In</string>
     <string name="hidePassword">Hide Password</string>
     <string name="showPassword">Show Password</string>
+    <string name="menu_name">Menu</string>
 </resources>

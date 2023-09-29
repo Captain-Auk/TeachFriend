@@ -1,4 +1,4 @@
-package com.example.trackster.ViewModels
+package com.example.trackster.presentationLayer.viewModels
 
 import android.text.TextUtils
 import android.util.Patterns

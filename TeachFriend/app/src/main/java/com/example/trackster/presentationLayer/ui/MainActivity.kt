@@ -1,4 +1,4 @@
-package com.example.trackster
+package com.example.trackster.presentationLayer.ui
 
 import android.os.Bundle
 
@@ -13,25 +13,23 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.trackster.ViewModels.LoginViewModel
-import com.example.trackster.dataLayer.AuthRepositoryImpl
-import com.example.trackster.dataLayer.RemoteDataSource
-import com.example.trackster.screens.LoginScreen
+
+import com.example.trackster.presentationLayer.screens.LoginScreen
 
 
-import com.example.trackster.ui.theme.TeachFriendTheme
+import com.example.trackster.presentationLayer.ui.theme.TeachFriendTheme
+import com.example.trackster.presentationLayer.viewModels.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             TeachFriendTheme {
+
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {

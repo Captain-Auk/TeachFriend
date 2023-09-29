@@ -1,4 +1,4 @@
-package com.example.trackster.ui.theme
+package com.example.trackster.presentationLayer.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

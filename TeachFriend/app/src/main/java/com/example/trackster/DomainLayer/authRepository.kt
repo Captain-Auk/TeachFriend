@@ -1,8 +1,7 @@
-package com.example.trackster.dataLayer
+package com.example.trackster.DomainLayer
 
 
-
-interface AuthRepository {
+interface authRepository {
 
     suspend fun authenticate(username: String, password: String): AuthToken
 
