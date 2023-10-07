@@ -7,4 +7,13 @@
     <string name="hidePassword">Hide Password</string>
     <string name="showPassword">Show Password</string>
     <string name="menu_name">Menu</string>
+    <string name="userAuth">userAuthScreens</string>
+    <string name="signUp">signUpScreen</string>
+    <string name="forgetPassword">Forget Password Screen</string>
+    <string name="Home">Home Screen</string>
+    <string name="class_name">Class Name</string>
+    <string name="course_name">Course Name</string>
+    <string name="total_tasks">Number of tasks</string>
+    <string name="total_breakpoints">Number of breakpoints</string>
+    <string name="submit">Submit\n</string>
 </resources>
