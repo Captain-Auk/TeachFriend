@@ -1,17 +1,20 @@
-package com.example.trackster.perfTracker.Stratum.viewModel
+package com.example.trackster.perfTracker.learnerGroup.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.trackster.perfTracker.localData.StratumEntity
-import com.example.trackster.perfTracker.localData.StratumRepository
+import com.example.trackster.perfTracker.learnerGroup.domain.ILearnerGroupRepository
+import com.example.trackster.perfTracker.learnerGroup.domain.LearnerGroupModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CreateStratumScreenViewModel @Inject constructor(
-    private val stratumRepository: StratumRepository
+class CreateLearnerGroupScreenViewModel @Inject constructor(
+    private val iLearnerGroupRepository: ILearnerGroupRepository
+
 ) : ViewModel() {
 
 
@@ -27,6 +30,17 @@ class CreateStratumScreenViewModel @Inject constructor(
     // total number of breakpoints(no. of terms or semester for that class
     private val _breakpoints = MutableStateFlow("0")
     val breakpoints: MutableStateFlow<String> get() = _breakpoints
+
+    private val _stratumList = MutableStateFlow(emptyList<LearnerGroupModel>())
+    val stratumList : StateFlow<List<LearnerGroupModel>> get() = _stratumList
+
+    init {
+        viewModelScope.launch {
+            _stratumList.update {
+                iLearnerGroupRepository.getLearnerGroup()
+            }
+        }
+    }
 
     fun onClassNameChanged(it: String) {
     _className.value = it
@@ -45,25 +59,19 @@ class CreateStratumScreenViewModel @Inject constructor(
    }
 
 
-
-     fun insertStratum(stratum: StratumEntity) {
-         viewModelScope.launch {
-             stratumRepository.createStratum(stratum)
-         }
-
+fun insertStratum(learnerGroupModel: LearnerGroupModel){
+    viewModelScope.launch {
+        iLearnerGroupRepository.createLearnerGroup(learnerGroupModel)
     }
+}
+//     fun insertStratum(stratum: StratumEntity) {
+//         viewModelScope.launch {
+//             stratumRepository.createStratum(stratum)
+//         }
+//
+//    }
 
-    /*  fun insertStratum() {
 
-          val localDb = perfTrackerLocalDb.getInstance(context)
-          val stratumDao = localDb.stratumDao()
 
-          val stratum= StratumEntity(
-              null,
-              className.value,
-              courseName.value,
-              totalTasks.value,
-              breakpoints.value)
-      }*/
 
 }

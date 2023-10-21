@@ -1,9 +1,9 @@
 package com.example.trackster.dependencyInj
 
 
-import com.example.trackster.userAuthentication.data.authRemoteDataSource
-import com.example.trackster.userAuthentication.data.authRepositoryImp
-import com.example.trackster.userAuthentication.data.authRepository
+import com.example.trackster.userAuthentication.data.AuthRemoteDataSource
+import com.example.trackster.userAuthentication.data.IAuthRepositoryImp
+import com.example.trackster.userAuthentication.data.IAuthRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,14 +12,14 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class authRepoModule {
+class AuthRepoModule {
 
     @Provides
     @Singleton
     //below both are same
    /* fun providesAuthRepository(authRepositoryImp: authRepositoryImp): authRepository{
         return authRepositoryImp*/
-        fun providesAuthRepository(authRemoteDataSource: authRemoteDataSource): authRepository {
-            return authRepositoryImp(authRemoteDataSource)
+        fun providesAuthRepository(authRemoteDataSource: AuthRemoteDataSource): IAuthRepository {
+            return IAuthRepositoryImp(authRemoteDataSource)
     }
 }

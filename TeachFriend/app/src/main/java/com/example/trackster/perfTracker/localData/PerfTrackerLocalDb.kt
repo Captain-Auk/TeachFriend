@@ -5,16 +5,16 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [
-        StratumEntity::class,
+        LearnerGroupEntity::class,
         StudentEntity::class,
         CourseEntity::class,
         TaskEntity::class,
         ScoreEntity::class
-    ], version = 1)
+    ], version = 2)
  abstract class PerfTrackerLocalDb : RoomDatabase() {
 
 
-    abstract fun StratumDao(): StratumDao
+    abstract fun StratumDao(): LearnerGroupDao
 
     // abstract fun studentDao(): StudentDao
     //abstract fun subjectDao(): CourseDao

@@ -5,7 +5,7 @@ import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.auth.Aut
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class authRemoteDataSource @Inject constructor(){
+class AuthRemoteDataSource @Inject constructor(){
         private val auth = FirebaseAuth.getInstance()
 
         suspend fun authenticateUser(username: String, password: String) {
@@ -23,7 +23,6 @@ class authRemoteDataSource @Inject constructor(){
                         // save the token or use it as needed
                 } else {
                         // handle failure
-                       // log.e("Authentication failed",result.exceptionOrNull()?.message)
                         throw AuthenticationException("Authentication Failed: ${result.exceptionOrNull()?.message}")
                 }
         }

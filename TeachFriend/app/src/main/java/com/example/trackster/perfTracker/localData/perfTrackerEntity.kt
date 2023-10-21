@@ -3,10 +3,10 @@ package com.example.trackster.perfTracker.localData
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "stratum")
-data class StratumEntity(
+@Entity(tableName = "LearnerGroup")
+data class LearnerGroupEntity(
     @PrimaryKey(autoGenerate = true)
-    val stratumId: Int?,
+    val learnerGroupId: Int?,
     val className: String,
     val courseName: String,
     val totalTasks: Int,

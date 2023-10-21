@@ -1,4 +1,4 @@
-package com.example.trackster.perfTracker.Stratum.ui
+package com.example.trackster.perfTracker.learnerGroup.ui
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -27,17 +27,17 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.teachfriend.R
-import com.example.trackster.perfTracker.localData.StratumEntity
 import com.example.trackster.navigation.Screens
+import com.example.trackster.perfTracker.learnerGroup.domain.LearnerGroupModel
 import com.example.trackster.uiHelpers.GeneralTextField
 import com.example.trackster.uiHelpers.NumberTextField
-import com.example.trackster.perfTracker.Stratum.viewModel.CreateStratumScreenViewModel
+import com.example.trackster.perfTracker.learnerGroup.viewModel.CreateLearnerGroupScreenViewModel
 
 //Creation of stratum, that is, a container for a particular class and course.
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateStratumScreen(viewModel: CreateStratumScreenViewModel, navController : NavController)  {
+fun CreateLearnerGroupScreen(viewModel: CreateLearnerGroupScreenViewModel, navController : NavController)  {
 
     val className = viewModel.className.collectAsStateWithLifecycle()
     val courseName = viewModel.courseName.collectAsStateWithLifecycle()
@@ -65,7 +65,7 @@ fun CreateStratumScreen(viewModel: CreateStratumScreenViewModel, navController :
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Welcome to the Home Screen")
+                Text(text = "Create your class")
                 Log.d("HomeScreen", "I am in homeScreen")
                 Spacer(modifier = Modifier.height(16.dp))
                 GeneralTextField(
@@ -92,7 +92,7 @@ fun CreateStratumScreen(viewModel: CreateStratumScreenViewModel, navController :
                 Button(
                     //text = stringResource(id = R.string.submit),
                     onClick = { viewModel.insertStratum(
-                        StratumEntity(
+                        LearnerGroupModel(
                         null,
                         className = className.value,
                         courseName = courseName.value,

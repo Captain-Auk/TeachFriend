@@ -5,17 +5,17 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface StratumDao{
+interface LearnerGroupDao{
     @Insert
     /*suspend fun insertStratum(
                               className: String,
                               courseName: String,
                               totalTasks: Int,
                               breakPoints: Int)*/
-    suspend fun insertStratum(stratum: StratumEntity)
+    suspend fun insertLearnerGroup(learnerGroup: LearnerGroupEntity)
 
-    @Query("SELECT * FROM stratum WHERE stratumId= :stratumId")
-    suspend fun getStratum(stratumId: Int): StratumEntity
+    @Query("SELECT * FROM learnerGroup")
+    suspend fun getLearnerGroup(): List<LearnerGroupEntity>
 }
 /*
 @Dao

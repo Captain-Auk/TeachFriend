@@ -4,9 +4,9 @@ import android.util.Log
 import javax.inject.Inject
 
 
-class authRepositoryImp @Inject constructor(
-    var authRemoteDataSource: authRemoteDataSource
-): authRepository {
+class IAuthRepositoryImp @Inject constructor(
+    private var authRemoteDataSource: AuthRemoteDataSource
+): IAuthRepository {
     override suspend fun authenticate(username: String, password: String): AuthToken {
 
         Log.d("authRepository", "USER IS AUTHENTICATED")
@@ -17,4 +17,10 @@ class authRepositoryImp @Inject constructor(
         return authRemoteDataSource.login()
 
     }
-    }
+}
+
+//class MockAuthRepository (): IAuthRepository {
+//    override suspend fun authenticate(username: String, password: String): AuthToken {
+//        return AuthToken("fake-token")
+//    }
+//}

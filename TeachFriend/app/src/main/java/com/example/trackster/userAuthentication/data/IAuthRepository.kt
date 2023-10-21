@@ -1,7 +1,7 @@
 package com.example.trackster.userAuthentication.data
 
 
-interface authRepository {
+interface IAuthRepository {
 
     suspend fun authenticate(username: String, password: String): AuthToken
 

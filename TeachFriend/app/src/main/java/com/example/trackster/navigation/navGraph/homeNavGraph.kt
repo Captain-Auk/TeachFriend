@@ -7,12 +7,12 @@ import androidx.navigation.navigation
 import com.example.trackster.navigation.HOME_ROUTE
 import com.example.trackster.navigation.Screens
 import com.example.trackster.perfTracker.courses.CourseScreen
-import com.example.trackster.perfTracker.Stratum.ui.CreateStratumScreen
-import com.example.trackster.perfTracker.Stratum.viewModel.CreateStratumScreenViewModel
+import com.example.trackster.perfTracker.learnerGroup.ui.CreateLearnerGroupScreen
+import com.example.trackster.perfTracker.learnerGroup.viewModel.CreateLearnerGroupScreenViewModel
 
 
 fun NavGraphBuilder.homeNavGraph(
-    homeViewModel: CreateStratumScreenViewModel,
+    createLearnerGroupScreenViewModel: CreateLearnerGroupScreenViewModel,
     navController: NavHostController
 ){
     navigation(
@@ -22,7 +22,7 @@ fun NavGraphBuilder.homeNavGraph(
         composable(
             route =  Screens.Home.route
         ){
-            CreateStratumScreen(homeViewModel,navController = navController)
+            CreateLearnerGroupScreen(createLearnerGroupScreenViewModel,navController = navController)
         }
         composable(
             route =  Screens.Course.route
